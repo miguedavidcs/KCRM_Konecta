@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,18 +18,14 @@
 			<th>Fecha de Ingreso</th>
 			<th>Salario</th>
 		</tr>
-		<%
-			for (com.prueba.model.Empleado empleado : empleados) {
-		%>
+		<c:forEach var="empleado" items="${empleados}">
 		<tr>
-			<td><%=empleado.getId()%></td>
-			<td><%=empleado.getNombre()%></td>
-			<td><%=empleado.getFechaIngreso()%></td>
-			<td><%=empleado.getSalario()%></td>
+			<td>${empleado.id}</td>
+			<td>${empleado.nombre}</td>
+			<td>${empleado.fechaIngreso}</td>
+			<td>${empleado.salario}</td>
 		</tr>
-		<%
-			}
-		%>
+		</c:forEach>
 	</table>
 
 	<a href="${pageContext.request.contextPath}/formularioEmpleado">
